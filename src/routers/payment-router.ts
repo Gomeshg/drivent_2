@@ -7,8 +7,7 @@ import { Router } from "express";
 const paymentRouter = Router();
 
 // paymentRouter.post("/", validateBody(createUserSchema), usersPost);
-paymentRouter.post("/", (req, res) => {
-  return;
-});
+paymentRouter.get("/");
+paymentRouter.post("/process");
 
 export { paymentRouter };

@@ -7,7 +7,8 @@ import { Router } from "express";
 const ticketRouter = Router();
 
 // ticketRouter.post("/", validateBody(createUserSchema), usersPost);
-ticketRouter.post("/", (req, res) => {
-  return;
-});
+ticketRouter.get("/types");
+ticketRouter.get("/");
+ticketRouter.post("/");
+
 export { ticketRouter };
