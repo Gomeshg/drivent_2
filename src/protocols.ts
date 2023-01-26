@@ -1,3 +1,5 @@
+import { RESERVED_NUMBERS } from "@brazilian-utils/brazilian-utils/dist/utilities/cnpj";
+
 export type ApplicationError = {
   name: string;
   message: string;
@@ -28,11 +30,13 @@ export type RequestError = {
   message: string;
 };
 
+type Status = "RESERVED" | "PAID";
+
 export type Ticket = {
   id?: number;
   ticketTypeId: number;
   enrollmentId: number;
-  status: string;
+  status: Status;
   createdAt?: Date;
   updateAt?: Date;
 };
