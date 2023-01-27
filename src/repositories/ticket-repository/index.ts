@@ -6,13 +6,16 @@ import { Ticket, TicketType } from "@/protocols";
 export async function createTicket(ticket: Ticket): Promise<Ticket> {
   return prisma.ticket.create({
     data: ticket,
+    include: {
+      TicketType: true,
+    },
   });
 }
 
-export async function readTicket(ticketId: number): Promise<Ticket> {
-  return prisma.ticket.findUnique({
+export async function readTicket(enrollmentId: number): Promise<Ticket> {
+  return prisma.ticket.findFirst({
     where: {
-      id: ticketId,
+      enrollmentId,
     },
     include: {
       TicketType: true,

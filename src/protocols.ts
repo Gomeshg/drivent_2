@@ -30,7 +30,7 @@ export type RequestError = {
   message: string;
 };
 
-type Status = "RESERVED" | "PAID";
+export type Status = "RESERVED" | "PAID";
 
 export type Ticket = {
   id?: number;

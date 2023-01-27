@@ -13,16 +13,26 @@ export async function getTicket(req: AuthenticatedRequest, res: Response) {
     const ticket = await ticketService.readTicket(userId);
     return res.status(httpStatus.OK).send(ticket);
   } catch (err) {
+    if (err.name === "NotFoundError") {
+      return res.sendStatus(httpStatus.NOT_FOUND);
+    }
     return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
   }
-
-  return 0;
 }
 
 export async function postTicket(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
+  const ticketTypeId: number = req.body.ticketTypeId;
 
-  return 0;
+  try {
+    const createdTicket = await ticketService.createTicket(userId, ticketTypeId);
+    return res.status(httpStatus.CREATED).send(createdTicket);
+  } catch (err) {
+    if (err.name === "NotFoundError") {
+      return res.sendStatus(httpStatus.NOT_FOUND);
+    }
+    return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+  }
 }
 
 export async function getTicketType(req: AuthenticatedRequest, res: Response) {
