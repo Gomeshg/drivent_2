@@ -20,18 +20,14 @@ export async function readTicket(ticketId: number): Promise<Ticket> {
   });
 }
 
-export async function readTicketType(ticketTypeId: number): Promise<TicketType[]> {
-  return prisma.ticketType.findMany({
-    where: {
-      id: ticketTypeId,
-    },
-  });
+export async function readAllTicketType(): Promise<TicketType[]> {
+  return prisma.ticketType.findMany();
 }
 
 const ticketRepository = {
   createTicket,
   readTicket,
-  readTicketType,
+  readAllTicketType,
 };
 
 export default ticketRepository;
