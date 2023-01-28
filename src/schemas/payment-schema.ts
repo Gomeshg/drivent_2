@@ -4,10 +4,16 @@ const paymentSchema = joi.object({
   ticketId: joi.number().integer().required(),
   cardData: {
     issuer: joi.string().required(),
-    number: joi.number().integer().required(),
+    number: joi
+      .string()
+      .pattern(/[0-9]{13,16}/)
+      .required(),
     name: joi.string().required(),
-    expirationDate: joi.date(),
-    cvv: joi.number().integer().required(),
+    expirationDate: joi.string().required(),
+    cvv: joi
+      .string()
+      .pattern(/[0-9]{3}/)
+      .required(),
   },
 });
 

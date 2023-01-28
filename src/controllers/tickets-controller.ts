@@ -1,5 +1,4 @@
 import { AuthenticatedRequest } from "@/middlewares";
-// import enrollmentsService from "@/services/enrollments-service"; TICKET SERVICE
 import ticketService from "@/services/ticket-service";
 import { Ticket, TicketType } from "@/protocols";
 

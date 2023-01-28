@@ -60,3 +60,14 @@ export type Payment = {
   createdAt?: Date;
   updateAt?: Date;
 };
+
+export type NewPayment = {
+  ticketId: number;
+  cardData: {
+    issuer: string;
+    number: string;
+    name: string;
+    expirationDate: Date;
+    cvv: number;
+  };
+};
