@@ -47,7 +47,7 @@ async function createPayment(userId: number, newPayment: NewPayment): Promise<Pa
 
   const createdPayment = await paymentRepository.createPayment(payment);
 
-  await ticketRepository.updateStatus(ticket.id, "PAID");
+  await ticketRepository.updateStatus(ticket.id, TicketStatus.PAID);
 
   return createdPayment;
 }
